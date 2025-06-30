@@ -1,0 +1,684 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #333;
+}
+
+#container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#background-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.header {
+    text-align: center;
+    padding: 80px 20px 60px;
+    position: relative;
+    z-index: 10;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-out;
+    text-align: center;
+}
+
+.typing-text {
+    background: linear-gradient(45deg, #fff, #f0f8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.main-content {
+    padding: 0 20px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* 3D 플립 카드 컨테이너 */
+.team-card {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    perspective: 1000px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideInUp 0.8s ease-out forwards;
+    z-index: 1;
+}
+
+.team-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+.team-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.team-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+.team-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+.team-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+.team-card:nth-child(6) {
+    animation-delay: 0.6s;
+}
+.team-card:nth-child(7) {
+    animation-delay: 0.7s;
+}
+.team-card:nth-child(8) {
+    animation-delay: 0.8s;
+}
+
+/* 카드 플립 컨테이너 */
+.card-flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.team-card:hover .card-flipper {
+    transform: rotateY(180deg);
+}
+
+/* 카드 앞면 */
+.card-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 카드 뒷면 */
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: linear-gradient(
+        135deg,
+        var(--team-color),
+        var(--team-color) dd
+    );
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.card-back::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at 30% 20%,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 50%
+    );
+    pointer-events: none;
+}
+
+/* 앞면 내용 */
+.team-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: var(--team-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    color: white;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.team-info h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.team-info .team-category {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 500;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+/* 뒷면 내용 */
+.card-back h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.card-back .team-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.95;
+    max-height: 120px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.card-back .team-description::-webkit-scrollbar {
+    width: 4px;
+}
+
+.card-back .team-description::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+.card-back .team-description::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+/* 플립 힌트 */
+.flip-hint {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.team-card:hover .flip-hint {
+    opacity: 1;
+}
+
+/* 호버 효과 */
+.team-card:hover .card-front {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+.team-card:hover .card-back {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* 카드 글로우 효과 */
+.card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at center,
+        var(--team-color) 20 0%,
+        transparent 70%
+    );
+    border-radius: 20px;
+    opacity: 0;
+    scale: 1;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* 리플 효과 */
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        var(--team-color) 30 0%,
+        transparent 70%
+    );
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 마우스 트레일 파티클 */
+.mouse-trail-particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes glow {
+    0%,
+    100% {
+        box-shadow: 0 0 20px var(--team-color) 40;
+    }
+    50% {
+        box-shadow: 0 0 40px var(--team-color) 60;
+    }
+}
+
+@keyframes bounce {
+    0%,
+    20%,
+    53%,
+    80%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+    40%,
+    43% {
+        transform: translate3d(0, -30px, 0);
+    }
+    70% {
+        transform: translate3d(0, -15px, 0);
+    }
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .team-card {
+        height: 250px;
+    }
+
+    .card-front,
+    .card-back {
+        padding: 25px;
+    }
+
+    .team-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+    }
+
+    .team-info h3 {
+        font-size: 1.5rem;
+    }
+
+    .header {
+        padding: 60px 20px 40px;
+    }
+
+    /* 모바일에서 플립 힌트 숨기기 */
+    .flip-hint {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .team-card {
+        height: 220px;
+    }
+
+    .card-front,
+    .card-back {
+        padding: 20px;
+    }
+
+    .team-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+
+    .team-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .card-back h3 {
+        font-size: 1.4rem;
+    }
+
+    .card-back .team-description {
+        font-size: 0.9rem;
+        max-height: 100px;
+    }
+}
+
+/* 터치 디바이스 대응 */
+@media (hover: none) and (pointer: coarse) {
+    /* 터치 디바이스에서는 호버 효과 대신 터치 이벤트 사용 */
+    .team-card:hover .card-flipper {
+        transform: none;
+    }
+
+    .team-card.touch-flipped .card-flipper {
+        transform: rotateY(180deg);
+    }
+
+    /* 터치 디바이스에서 플립 힌트 변경 */
+    .flip-hint {
+        content: "터치하여 상세보기";
+        opacity: 1;
+        color: rgba(0, 0, 0, 0.6);
+    }
+
+    /* 터치 디바이스에서 호버 효과 비활성화 */
+    .team-card:hover .card-front,
+    .team-card:hover .card-back {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* 전체화면 모달 */
+.fullscreen-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.fullscreen-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.fullscreen-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    padding: 60px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform: scale(0.8);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+
+.fullscreen-modal.active .fullscreen-card {
+    transform: scale(1);
+}
+
+.fullscreen-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    text-align: center;
+    flex-direction: column;
+}
+
+.fullscreen-card-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 30px;
+    background: var(--team-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    color: white;
+    margin-bottom: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.fullscreen-card-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.fullscreen-card-category {
+    font-size: 1.2rem;
+    color: #666;
+    font-weight: 500;
+    padding: 12px 24px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 25px;
+}
+
+.fullscreen-card-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    text-align: left;
+}
+
+/* 닫기 버튼 */
+.close-modal {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: #111;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    line-height: 1;
+    z-index: 10001;
+}
+
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* 스크롤바 스타일 */
+.fullscreen-card::-webkit-scrollbar {
+    width: 8px;
+}
+
+.fullscreen-card::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+.fullscreen-card::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.fullscreen-card::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .fullscreen-card {
+        padding: 40px 30px;
+        margin: 20px;
+    }
+
+    .fullscreen-card-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    .fullscreen-card-title {
+        font-size: 2rem;
+    }
+
+    .fullscreen-card-description {
+        font-size: 1rem;
+    }
+
+    .close-modal {
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fullscreen-card {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+
+    .fullscreen-card-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+    }
+
+    .fullscreen-card-title {
+        font-size: 1.5rem;
+    }
+
+    .fullscreen-card-category {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>팀 소개 - 우리 회사</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    </head>
+    <body>
+        <div id="container">
+            <div id="background-canvas"></div>
+
+            <header class="header">
+                <h1 class="title">
+                    <span class="typing-text">EIBE 팀을 소개합니다</span>
+                </h1>
+            </header>
+
+            <main class="main-content">
+                <div class="team-grid" id="teamGrid">
+                    <!-- 팀 카드들이 동적으로 생성됩니다 -->
+                </div>
+            </main>
+
+            <div class="floating-particles" id="particles"></div>
+        </div>
+
+        <!-- 전체화면 모달 -->
+        <div class="fullscreen-modal" id="fullscreenModal">
+            <div class="fullscreen-card" id="fullscreenCard">
+                <button class="close-modal" id="closeModal">×</button>
+                <div class="fullscreen-card-header">
+                    <div class="fullscreen-card-icon" id="modalIcon"></div>
+                    <h2 class="fullscreen-card-title" id="modalTitle"></h2>
+                    <div
+                        class="fullscreen-card-category"
+                        id="modalCategory"
+                    ></div>
+                </div>
+                <div
+                    class="fullscreen-card-description"
+                    id="modalDescription"
+                ></div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
