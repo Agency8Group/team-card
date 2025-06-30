@@ -67,7 +67,7 @@ body {
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     padding: 20px 0;
 }
@@ -392,6 +392,18 @@ body {
 }
 
 /* 반응형 디자인 */
+@media (max-width: 1024px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 768px) {
     .title {
         font-size: 2.5rem;
@@ -399,11 +411,6 @@ body {
 
     .subtitle {
         font-size: 1.1rem;
-    }
-
-    .team-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
     }
 
     .team-card {
