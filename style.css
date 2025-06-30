@@ -394,13 +394,23 @@ body {
 /* 반응형 디자인 */
 @media (max-width: 1024px) {
     .team-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
     }
-}
 
-@media (max-width: 600px) {
-    .team-grid {
-        grid-template-columns: 1fr;
+    .team-card {
+        height: 250px;
+    }
+
+    .card-front,
+    .card-back {
+        padding: 20px;
+    }
+
+    .team-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
     }
 }
 
@@ -413,38 +423,9 @@ body {
         font-size: 1.1rem;
     }
 
-    .team-card {
-        height: 250px;
-    }
-
-    .card-front,
-    .card-back {
-        padding: 25px;
-    }
-
-    .team-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 28px;
-    }
-
-    .team-info h3 {
-        font-size: 1.5rem;
-    }
-
-    .header {
-        padding: 60px 20px 40px;
-    }
-
-    /* 모바일에서 플립 힌트 숨기기 */
-    .flip-hint {
-        display: none;
-    }
-}
-
-@media (max-width: 480px) {
-    .title {
-        font-size: 2rem;
+    .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
     }
 
     .team-card {
@@ -453,26 +434,69 @@ body {
 
     .card-front,
     .card-back {
-        padding: 20px;
+        padding: 15px;
     }
 
     .team-icon {
         width: 50px;
         height: 50px;
         font-size: 24px;
+        margin-bottom: 15px;
     }
 
     .team-info h3 {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
+    }
+
+    .header {
+        padding: 60px 20px 40px;
+    }
+
+    .flip-hint {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .team-card {
+        height: 200px;
+    }
+
+    .card-front,
+    .card-back {
+        padding: 12px;
+        border-radius: 15px;
+    }
+
+    .team-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        margin-bottom: 10px;
+        border-radius: 12px;
+    }
+
+    .team-info h3 {
+        font-size: 1rem;
+        margin-bottom: 8px;
     }
 
     .card-back h3 {
-        font-size: 1.4rem;
+        font-size: 1.1rem;
     }
 
     .card-back .team-description {
-        font-size: 0.9rem;
-        max-height: 100px;
+        font-size: 0.85rem;
+        line-height: 1.4;
     }
 }
 
