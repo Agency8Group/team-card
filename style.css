@@ -28,7 +28,7 @@ body {
 
 .header {
     text-align: center;
-    padding: 80px 20px 60px;
+    padding: 40px 20px 30px;
     position: relative;
     z-index: 10;
 }
@@ -67,7 +67,7 @@ body {
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     padding: 20px 0;
 }
@@ -394,7 +394,7 @@ body {
 /* 반응형 디자인 */
 @media (max-width: 1024px) {
     .team-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 20px;
     }
 
@@ -424,36 +424,36 @@ body {
     }
 
     .team-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
     }
 
     .team-card {
-        height: 220px;
+        height: 180px;
     }
 
     .card-front,
     .card-back {
-        padding: 15px;
+        padding: 12px;
     }
 
     .team-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
-        margin-bottom: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        margin-bottom: 10px;
     }
 
     .team-info h3 {
-        font-size: 1.1rem;
+        font-size: 0.9rem;
     }
 
     .header {
-        padding: 60px 20px 40px;
+        padding: 30px 20px 20px;
     }
 
     .flip-hint {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 }
 
@@ -463,40 +463,40 @@ body {
     }
 
     .team-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
     }
 
     .team-card {
-        height: 200px;
+        height: 160px;
     }
 
     .card-front,
     .card-back {
-        padding: 12px;
-        border-radius: 15px;
-    }
-
-    .team-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-        margin-bottom: 10px;
+        padding: 8px;
         border-radius: 12px;
     }
 
+    .team-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+        margin-bottom: 6px;
+        border-radius: 8px;
+    }
+
     .team-info h3 {
-        font-size: 1rem;
-        margin-bottom: 8px;
+        font-size: 0.8rem;
+        margin-bottom: 4px;
     }
 
     .card-back h3 {
-        font-size: 1.1rem;
+        font-size: 0.9rem;
     }
 
     .card-back .team-description {
-        font-size: 0.85rem;
-        line-height: 1.4;
+        font-size: 0.75rem;
+        line-height: 1.3;
     }
 }
 
