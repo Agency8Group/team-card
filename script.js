@@ -24,8 +24,8 @@ const teamDescriptions = [
 const teamNames = [
     "경영관리실",
     "전략기획실",
-    "압타밀 팀",
-    "드리미 팀",
+    "Aptamil",
+    "Dreame",
     "컨텐츠 팀",
     "고객지원부",
     "물류센터",
@@ -285,8 +285,8 @@ function getTeamCategory(teamName) {
     const categories = {
         "경영관리실": "경영지원",
         "전략기획실": "전략기획",
-        "압타밀 팀": "브랜드관리",
-        "드리미 팀": "브랜드관리",
+        "Aptamil": "브랜드관리",
+        "Dreame": "브랜드관리",
         "컨텐츠 팀": "크리에이티브",
         "고객지원부": "고객서비스",
         "물류센터": "물류운영",
