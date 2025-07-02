@@ -58,7 +58,7 @@ body {
 }
 
 .main-content {
-    padding: 0 20px 40px;
+    padding: 0 20px 20px;
     max-width: 1400px;
     margin: 0 auto;
     position: relative;
@@ -191,11 +191,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 36px;
     color: white;
     margin-bottom: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
+}
+
+.team-icon svg {
+    width: 40px;
+    height: 40px;
 }
 
 .team-info h3 {
@@ -443,9 +447,13 @@ body {
     .team-icon {
         width: 50px;
         height: 50px;
-        font-size: 24px;
         margin-bottom: 15px;
         border-radius: 12px;
+    }
+
+    .team-icon svg {
+        width: 24px;
+        height: 24px;
     }
 
     .team-info h3 {
@@ -466,7 +474,7 @@ body {
     }
 
     .main-content {
-        padding: 0 15px 30px;
+        padding: 0 15px 15px;
     }
 }
 
@@ -499,9 +507,13 @@ body {
     .team-icon {
         width: 40px;
         height: 40px;
-        font-size: 20px;
         margin-bottom: 10px;
         border-radius: 10px;
+    }
+
+    .team-icon svg {
+        width: 20px;
+        height: 20px;
     }
 
     .team-info h3 {
@@ -523,7 +535,7 @@ body {
     }
 
     .main-content {
-        padding: 0 10px 20px;
+        padding: 0 10px 10px;
     }
 
     .header {
@@ -616,10 +628,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 60px;
     color: white;
     margin-bottom: 30px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.fullscreen-card-icon svg {
+    width: 60px;
+    height: 60px;
 }
 
 .fullscreen-card-title {
@@ -704,9 +720,13 @@ body {
     .fullscreen-card-icon {
         width: 70px;
         height: 70px;
-        font-size: 35px;
         margin-bottom: 15px;
         border-radius: 20px;
+    }
+
+    .fullscreen-card-icon svg {
+        width: 35px;
+        height: 35px;
     }
 
     .fullscreen-card-title {
@@ -746,7 +766,11 @@ body {
     .fullscreen-card-icon {
         width: 60px;
         height: 60px;
-        font-size: 30px;
+    }
+
+    .fullscreen-card-icon svg {
+        width: 30px;
+        height: 30px;
     }
 
     .fullscreen-card-title {
