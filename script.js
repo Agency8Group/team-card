@@ -289,23 +289,34 @@ function createTeamCards() {
         // 터치 이벤트 (모바일)
         let touchStartTime = 0;
         let touchEndTime = 0;
+        let isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
         
-        card.addEventListener('touchstart', (e) => {
-            touchStartTime = new Date().getTime();
-            e.preventDefault();
-        });
-        
-        card.addEventListener('touchend', (e) => {
-            touchEndTime = new Date().getTime();
-            const touchDuration = touchEndTime - touchStartTime;
+        if (isMobile) {
+            // 모바일에서는 바로 모달 열기
+            card.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                createClickParticles(card);
+                showFullscreenModal(name, teamIcons[index], getTeamCategory(name), teamDescriptions[index], teamColors[index]);
+            });
+        } else {
+            // 데스크톱에서는 기존 호버 플립 유지
+            card.addEventListener('touchstart', (e) => {
+                touchStartTime = new Date().getTime();
+                e.preventDefault();
+            });
             
-            // 짧은 터치만 플립 (길게 누르기 방지)
-            if (touchDuration < 500) {
-                toggleCardFlip(card);
-            }
-            
-            e.preventDefault();
-        });
+            card.addEventListener('touchend', (e) => {
+                touchEndTime = new Date().getTime();
+                const touchDuration = touchEndTime - touchStartTime;
+                
+                // 짧은 터치만 플립 (길게 누르기 방지)
+                if (touchDuration < 500) {
+                    toggleCardFlip(card);
+                }
+                
+                e.preventDefault();
+            });
+        }
         
         teamGrid.appendChild(card);
     });
