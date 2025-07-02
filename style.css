@@ -143,7 +143,7 @@ body {
 }
 
 .team-card:hover .card-flipper {
-    transform: rotateY(180deg) rotateX(5deg) rotateZ(2deg);
+    transform: rotateY(180deg);
 }
 
 /* 카드 앞면 */
@@ -301,7 +301,7 @@ body {
 }
 
 .team-card:hover .team-icon {
-    transform: scale(1.1) rotateY(10deg);
+    transform: scale(1.1);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
 }
 
