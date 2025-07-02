@@ -591,6 +591,10 @@ body {
     .header {
         padding: 8px 15px;
     }
+
+    .flip-hint {
+        display: none;
+    }
 }
 
 /* 터치 디바이스 대응 */
