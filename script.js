@@ -270,9 +270,19 @@ function createTeamCards() {
             removeFloatingEffect(card);
             removeGlowEffect(card);
         });
+
+        // 마우스 따라다니는 조명 효과
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty('--mouse-x', `${x}%`);
+            card.style.setProperty('--mouse-y', `${y}%`);
+        });
         
         // 클릭 이벤트 추가
         card.addEventListener('click', () => {
+            createClickParticles(card);
             showFullscreenModal(name, teamIcons[index], getTeamCategory(name), teamDescriptions[index], teamColors[index]);
         });
         
@@ -381,6 +391,83 @@ function createRippleEffect(card) {
         ease: "power2.out",
         onComplete: () => ripple.remove()
     });
+}
+
+function createClickParticles(card) {
+    const rect = card.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const teamColor = getComputedStyle(card).getPropertyValue('--team-color');
+    
+    // 파티클 개수 대폭 증가
+    for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        const size = 15 + Math.random() * 25; // 15-40px 랜덤 크기
+        particle.style.cssText = `
+            position: fixed;
+            width: ${size}px;
+            height: ${size}px;
+            background: ${teamColor};
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            left: ${centerX}px;
+            top: ${centerY}px;
+            box-shadow: 0 0 20px ${teamColor};
+        `;
+        
+        document.body.appendChild(particle);
+        
+        const angle = (i / 20) * Math.PI * 2;
+        const distance = 150 + Math.random() * 100; // 더 멀리 퍼짐
+        const endX = centerX + Math.cos(angle) * distance;
+        const endY = centerY + Math.sin(angle) * distance;
+        
+        gsap.to(particle, {
+            x: endX - centerX,
+            y: endY - centerY,
+            opacity: 0,
+            scale: 0,
+            duration: 1.5,
+            ease: "power2.out",
+            onComplete: () => particle.remove()
+        });
+    }
+    
+    // 추가로 큰 파티클들도 생성
+    for (let i = 0; i < 5; i++) {
+        const bigParticle = document.createElement('div');
+        const bigSize = 30 + Math.random() * 40; // 30-70px 큰 파티클
+        bigParticle.style.cssText = `
+            position: fixed;
+            width: ${bigSize}px;
+            height: ${bigSize}px;
+            background: radial-gradient(circle, ${teamColor}, transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            left: ${centerX}px;
+            top: ${centerY}px;
+            box-shadow: 0 0 40px ${teamColor};
+        `;
+        
+        document.body.appendChild(bigParticle);
+        
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 200 + Math.random() * 150;
+        const endX = centerX + Math.cos(angle) * distance;
+        const endY = centerY + Math.sin(angle) * distance;
+        
+        gsap.to(bigParticle, {
+            x: endX - centerX,
+            y: endY - centerY,
+            opacity: 0,
+            scale: 0,
+            duration: 2,
+            ease: "power2.out",
+            onComplete: () => bigParticle.remove()
+        });
+    }
 }
 
 // 카드 플립 토글 함수
@@ -524,9 +611,38 @@ function initScrollAnimations() {
     });
 }
 
+// 타이핑 애니메이션
+function initTypingAnimation() {
+    const title = document.querySelector('.typing-text');
+    if (!title) return;
+    
+    const text = title.textContent;
+    title.textContent = '';
+    title.style.borderRight = '2px solid #fff';
+    
+    let i = 0;
+    const typeWriter = () => {
+        if (i < text.length) {
+            title.textContent += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 100);
+        } else {
+            // 타이핑 완료 후 커서 깜빡임
+            setTimeout(() => {
+                title.style.borderRight = 'none';
+            }, 1000);
+        }
+    };
+    
+    setTimeout(typeWriter, 500);
+}
+
 // 초기화
 document.addEventListener('DOMContentLoaded', () => {
     try {
+        // 타이핑 애니메이션 시작
+        initTypingAnimation();
+        
         // 마우스 추적 및 배경 애니메이션 초기화
         const { mouseTrail, backgroundAnimation } = initMouseTracking();
         
