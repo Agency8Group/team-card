@@ -292,11 +292,25 @@ function createTeamCards() {
         let isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
         
         if (isMobile) {
-            // 모바일에서는 바로 모달 열기
-            card.addEventListener('touchend', (e) => {
+            // 모바일에서는 플립과 모달 모두 지원
+            card.addEventListener('touchstart', (e) => {
+                touchStartTime = new Date().getTime();
                 e.preventDefault();
-                createClickParticles(card);
-                showFullscreenModal(name, teamIcons[index], getTeamCategory(name), teamDescriptions[index], teamColors[index]);
+            });
+            
+            card.addEventListener('touchend', (e) => {
+                touchEndTime = new Date().getTime();
+                const touchDuration = touchEndTime - touchStartTime;
+                
+                // 짧은 터치는 플립, 길게 누르기는 모달
+                if (touchDuration < 300) {
+                    toggleCardFlip(card);
+                } else if (touchDuration > 500) {
+                    createClickParticles(card);
+                    showFullscreenModal(name, teamIcons[index], getTeamCategory(name), teamDescriptions[index], teamColors[index]);
+                }
+                
+                e.preventDefault();
             });
         } else {
             // 데스크톱에서는 기존 호버 플립 유지
@@ -490,15 +504,15 @@ function toggleCardFlip(card) {
         card.classList.remove('touch-flipped');
         gsap.to(flipper, {
             rotateY: 0,
-            duration: 0.6,
-            ease: "power2.inOut"
+            duration: 0.8,
+            ease: "back.out(1.7)"
         });
     } else {
         card.classList.add('touch-flipped');
         gsap.to(flipper, {
             rotateY: 180,
-            duration: 0.6,
-            ease: "power2.inOut"
+            duration: 0.8,
+            ease: "back.out(1.7)"
         });
     }
 }
