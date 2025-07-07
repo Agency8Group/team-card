@@ -804,6 +804,11 @@ body {
     text-align: center;
 }
 
+.team-description-section {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
 .team-members-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -1114,6 +1119,11 @@ body {
         font-size: 0.6rem;
     }
 
+    .team-description-section {
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+
     .modal-scroll-hint {
         margin-bottom: 15px;
     }
@@ -1196,6 +1206,11 @@ body {
         width: 35px;
         height: 35px;
         font-size: 18px;
+    }
+
+    .team-description-section {
+        margin-top: 10px;
+        margin-bottom: 15px;
     }
 
     .modal-scroll-hint {
