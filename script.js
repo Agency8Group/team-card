@@ -934,6 +934,9 @@ function showFullscreenModal(name, icon, category, description, color) {
     
     // 스크롤 방지
     document.body.style.overflow = 'hidden';
+    
+    // 모달 스크롤 힌트 초기화
+    setTimeout(initModalScrollHint, 100);
 }
 
 // 전체화면 모달 닫기
@@ -1113,6 +1116,22 @@ function initTypingAnimation() {
     setTimeout(typeWriter, 500);
 }
 
+// 모달 스크롤 힌트 클릭 이벤트
+function initModalScrollHint() {
+    const modalScrollHint = document.querySelector('.modal-scroll-hint-arrow');
+    if (modalScrollHint) {
+        modalScrollHint.addEventListener('click', () => {
+            const teamMembersSection = document.getElementById('teamMembersSection');
+            if (teamMembersSection) {
+                teamMembersSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
+}
+
 // 초기화
 document.addEventListener('DOMContentLoaded', () => {
     try {
@@ -1127,6 +1146,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // 스크롤 애니메이션 초기화
         setTimeout(initScrollAnimations, 1000);
+        
+
         
         // 페이지 언로드 시 정리
         window.addEventListener('beforeunload', () => {

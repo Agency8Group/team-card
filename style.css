@@ -57,6 +57,39 @@ body {
     animation: fadeInUp 1s ease-out 0.3s both;
 }
 
+/* 스크롤 힌트 */
+.scroll-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 1s both;
+}
+
+.scroll-hint-text {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+    margin-bottom: 10px;
+    text-align: center;
+    animation: fadeInOut 3s infinite;
+}
+
+.scroll-hint-arrow {
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.6);
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.scroll-hint-arrow:hover {
+    color: rgba(255, 255, 255, 0.9);
+    transform: scale(1.2);
+}
+
 .main-content {
     padding: 0 20px 20px;
     max-width: 1400px;
@@ -448,6 +481,16 @@ body {
     }
 }
 
+@keyframes fadeInOut {
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
 /* 반응형 디자인 */
 @media (max-width: 1024px) {
     .team-grid {
@@ -523,6 +566,18 @@ body {
         padding: 10px 20px;
     }
 
+    .scroll-hint {
+        margin-top: 20px;
+    }
+
+    .scroll-hint-text {
+        font-size: 0.9rem;
+    }
+
+    .scroll-hint-arrow {
+        font-size: 1.5rem;
+    }
+
     .flip-hint {
         font-size: 0.75rem;
     }
@@ -595,6 +650,18 @@ body {
 
     .header {
         padding: 8px 15px;
+    }
+
+    .scroll-hint {
+        margin-top: 15px;
+    }
+
+    .scroll-hint-text {
+        font-size: 0.8rem;
+    }
+
+    .scroll-hint-arrow {
+        font-size: 1.2rem;
     }
 
     .flip-hint {
@@ -799,6 +866,39 @@ body {
     margin-top: 5px;
     text-align: center;
     line-height: 1.2;
+}
+
+/* 모달 스크롤 힌트 */
+.modal-scroll-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.modal-scroll-hint-text {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 400;
+    margin-bottom: 10px;
+    text-align: center;
+    animation: fadeInOut 3s infinite;
+}
+
+.modal-scroll-hint-arrow {
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.5);
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.modal-scroll-hint-arrow:hover {
+    color: rgba(0, 0, 0, 0.8);
+    transform: scale(1.2);
 }
 
 /* 닫기 버튼 */
@@ -1014,6 +1114,18 @@ body {
         font-size: 0.6rem;
     }
 
+    .modal-scroll-hint {
+        margin-bottom: 15px;
+    }
+
+    .modal-scroll-hint-text {
+        font-size: 0.9rem;
+    }
+
+    .modal-scroll-hint-arrow {
+        font-size: 1.5rem;
+    }
+
     .member-photo-content {
         padding: 30px 20px;
         max-width: 400px;
@@ -1084,5 +1196,17 @@ body {
         width: 35px;
         height: 35px;
         font-size: 18px;
+    }
+
+    .modal-scroll-hint {
+        margin-bottom: 10px;
+    }
+
+    .modal-scroll-hint-text {
+        font-size: 0.8rem;
+    }
+
+    .modal-scroll-hint-arrow {
+        font-size: 1.2rem;
     }
 }
