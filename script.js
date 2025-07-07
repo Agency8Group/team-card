@@ -2,9 +2,9 @@
 const teamColors = [
     "#2B3A67", // 경영관리실
     "#5A6D8F", // 전략기획실 (블루퍼플 틸)
-    "#B3D5F2", // 압타밀 팀
-    "#FFA450", // 드리미 팀
-    "#7FC7FF", // 컨텐츠 팀
+    "#B3D5F2", // Aptamil사업부
+    "#FFA450", // Dreame사업부
+    "#7FC7FF", // 컨텐츠팀
     "#50E3C2", // 고객지원부
     "#6E7A87", // 물류센터
     "#C96BE2"  // 마케팅팀
@@ -21,12 +21,371 @@ const teamDescriptions = [
     "브랜드 인지도 향상과 매출 성장을 위한 통합 마케팅을 기획합니다. \n리뷰 기반 디지털 광고, 타겟 광고, 프로모션 전략을 통해 플랫폼 내 경쟁력을 확보합니다."
 ];
 
+// 조직도 데이터
+const orgData = {
+    root: {
+        name: "대표이사 강필구",
+        floor: "",
+        image: "https://via.placeholder.com/200x200/1e40af/ffffff?text=강필구",
+    },
+    depts: [
+        // === 1: 경영진 ===
+        {
+            title: "경영관리실",
+            count: 7,
+            floor: "2F",
+            members: [
+                {
+                    name: "강필구 (대표이사)",
+                    image: "https://via.placeholder.com/200x200/1e40af/ffffff?text=강필구",
+                },
+                {
+                    name: "신선일 (이사)",
+                    image: "https://via.placeholder.com/200x200/10b981/ffffff?text=신선일",
+                },
+                {
+                    name: "유은주 (과장)",
+                    image: "https://via.placeholder.com/200x200/f59e0b/ffffff?text=유은주",
+                },
+                {
+                    name: "정아린 (사원)",
+                    image: "https://via.placeholder.com/200x200/ef4444/ffffff?text=정아린",
+                },
+                {
+                    name: "김세진 (사원)",
+                    image: "https://via.placeholder.com/200x200/8b5cf6/ffffff?text=김세진",
+                },
+                {
+                    name: "장주희 (사원)",
+                    image: "https://via.placeholder.com/200x200/06b6d4/ffffff?text=장주희",
+                },
+                {
+                    name: "최혁준 (사원)",
+                    image: "https://via.placeholder.com/200x200/84cc16/ffffff?text=최혁준",
+                },
+            ],
+        },
+        // === 2: 전략부서 ===
+        {
+            title: "전략기획실",
+            count: 3,
+            floor: "2F",
+            members: [
+                {
+                    name: "박병도 (실장)",
+                    image: "https://via.placeholder.com/200x200/1e40af/ffffff?text=박병도",
+                },
+                {
+                    name: "강병현 (팀장)",
+                    image: "https://via.placeholder.com/200x200/10b981/ffffff?text=강병현",
+                    motto: "다 계획이 있eibe ",
+                },
+                {
+                    name: "지윤환 (과장)",
+                    image: "people/지윤환.png",
+                    motto: "다 계획이 있eibe ",
+                },
+            ],
+        },
+        // === 3: 핵심 사업부 ===
+        {
+            title: "Aptamil사업부",
+            count: 18,
+            floor: "2F",
+            members: [
+                {
+                    name: "김정준 (본부장)",
+                    image: "https://via.placeholder.com/200x200/1e40af/ffffff?text=김정준",
+                },
+                {
+                    name: "김민욱 (팀장)",
+                    image: "https://via.placeholder.com/200x200/10b981/ffffff?text=김민욱",
+                },
+                {
+                    name: "김영훈 (파트장)",
+                    image: "https://via.placeholder.com/200x200/84cc16/ffffff?text=김영훈",
+                },
+                {
+                    name: "김예진 (과장)",
+                    image: "https://via.placeholder.com/200x200/f59e0b/ffffff?text=김예진",
+                },
+                {
+                    name: "김은정 (대리)",
+                    image: "https://via.placeholder.com/200x200/ef4444/ffffff?text=김은정",
+                },
+                {
+                    name: "박효진 (대리)",
+                    image: "https://via.placeholder.com/200x200/8b5cf6/ffffff?text=박효진",
+                },
+                {
+                    name: "최은영 (대리)",
+                    image: "https://via.placeholder.com/200x200/06b6d4/ffffff?text=최은영",
+                },
+                {
+                    name: "박지영 (대리)",
+                    image: "https://via.placeholder.com/200x200/8b5cf6/ffffff?text=박지영",
+                },
+                {
+                    name: "신유정 (매니져)",
+                    image: "https://via.placeholder.com/200x200/10b981/ffffff?text=신유정",
+                },
+                {
+                    name: "최아리찬 (사원)",
+                    image: "https://via.placeholder.com/200x200/1e40af/ffffff?text=최아리찬",
+                },
+                {
+                    name: "이산하 (사원)",
+                    image: "https://via.placeholder.com/200x200/10b981/ffffff?text=이산하",
+                },
+                {
+                    name: "권재은 (사원)",
+                    image: "https://via.placeholder.com/200x200/ef4444/ffffff?text=권재은",
+                },
+                {
+                    name: "이지혜 (사원)",
+                    image: "https://via.placeholder.com/200x200/84cc16/ffffff?text=이지혜",
+                },
+                {
+                    name: "송예진 (사원)",
+                    image: "https://via.placeholder.com/200x200/1e40af/ffffff?text=송예진",
+                },
+                {
+                    name: "형성인 (사원)",
+                    image: "https://via.placeholder.com/200x200/f59e0b/ffffff?text=형성인",
+                },
+                {
+                    name: "신선경 (사원,재택)",
+                    image: "https://via.placeholder.com/200x200/ef4444/ffffff?text=신선경",
+                },
+                {
+                    name: "서정민 (사원)",
+                    image: "https://via.placeholder.com/200x200/1e40af/ffffff?text=서정민",
+                },
+                {
+                    name: "박종호 (수습)",
+                    image: "https://via.placeholder.com/200x200/06b6d4/ffffff?text=박종호",
+                },
+                {
+                    name: "조성익 (수습)",
+                    image: "https://via.placeholder.com/200x200/06b6d4/ffffff?text=조성익",
+                },
+            ],
+        },
+        // === 4: 사업부 2 ===
+        {
+            title: "Dreame사업부",
+            count: 16,
+            floor: "4F",
+            members: [
+                {
+                    name: "강병훈 (팀장)",
+                    image: "https://via.placeholder.com/200x200/1e40af/ffffff?text=강병훈",
+                },
+                {
+                    name: "윤성규 (파트장)",
+                    image: "https://via.placeholder.com/200x200/10b981/ffffff?text=윤성규",
+                },
+                {
+                    name: "이영우 (과장)",
+                    image: "https://via.placeholder.com/200x200/f59e0b/ffffff?text=이영우",
+                },
+                {
+                    name: "홍성수 (과장)",
+                    image: "https://via.placeholder.com/200x200/ef4444/ffffff?text=홍성수",
+                },
+                {
+                    name: "황재완 (대리)",
+                    image: "https://via.placeholder.com/200x200/8b5cf6/ffffff?text=황재완",
+                },
+                {
+                    name: "설길호 (대리)",
+                    image: "https://via.placeholder.com/200x200/06b6d4/ffffff?text=설길호",
+                },
+                {
+                    name: "김정호 (대리)",
+                    image: "https://via.placeholder.com/200x200/84cc16/ffffff?text=김정호",
+                },
+                {
+                    name: "박민찬 (주임)",
+                    image: "https://via.placeholder.com/200x200/1e40af/ffffff?text=박민찬",
+                },
+                {
+                    name: "이수진 (주임)",
+                    image: "https://via.placeholder.com/200x200/10b981/ffffff?text=이수진",
+                },
+                {
+                    name: "정성원 (주임)",
+                    image: "https://via.placeholder.com/200x200/f59e0b/ffffff?text=정성원",
+                },
+                {
+                    name: "권도연 (주임)",
+                    image: "https://via.placeholder.com/200x200/ef4444/ffffff?text=권도연",
+                },
+                {
+                    name: "이다현 (사원)",
+                    image: "https://via.placeholder.com/200x200/1e40af/ffffff?text=이다현",
+                },
+                {
+                    name: "이윤경 (사원)",
+                    image: "https://via.placeholder.com/200x200/84cc16/ffffff?text=이윤경",
+                },
+                {
+                    name: "조하정 (수습)",
+                    image: "https://via.placeholder.com/200x200/8b5cf6/ffffff?text=조하정",
+                },
+                {
+                    name: "변해형 (수습)",
+                    image: "https://via.placeholder.com/200x200/06b6d4/ffffff?text=변해형",
+                },
+                {
+                    name: "최유선 (수습)",
+                    image: "https://via.placeholder.com/200x200/1e40af/ffffff?text=최유선",
+                },
+            ],
+        },
+        // === 5: 지원부서 ===
+        {
+            title: "컨텐츠팀",
+            count: 4,
+            floor: "4F",
+            members: [
+                {
+                    name: "지연아 (과장)",
+                    image: "https://via.placeholder.com/200x200/1e40af/ffffff?text=지연아",
+                },
+                {
+                    name: "조예은 (대리)",
+                    image: "https://via.placeholder.com/200x200/10b981/ffffff?text=조예은",
+                },
+                {
+                    name: "조민지 (주임)",
+                    image: "https://via.placeholder.com/200x200/f59e0b/ffffff?text=조민지",
+                },
+                {
+                    name: "박규원 (사원)",
+                    image: "https://via.placeholder.com/200x200/ef4444/ffffff?text=박규원",
+                },
+            ],
+        },
+        // === 6: 고객지원 ===
+        {
+            title: "고객지원부",
+            count: 6,
+            floor: "3F",
+            members: [
+                {
+                    name: "신선주 (팀장)",
+                    image: "https://via.placeholder.com/200x200/1e40af/ffffff?text=신선주",
+                },
+                {
+                    name: "최이슬 (과장)",
+                    image: "https://via.placeholder.com/200x200/10b981/ffffff?text=최이슬",
+                },
+                {
+                    name: "박주영 (사원)",
+                    image: "https://via.placeholder.com/200x200/84cc16/ffffff?text=박주영",
+                },
+                {
+                    name: "노가을 (수습)",
+                    image: "https://via.placeholder.com/200x200/ef4444/ffffff?text=노가을",
+                },
+                {
+                    name: "장주현 (수습)",
+                    image: "https://via.placeholder.com/200x200/8b5cf6/ffffff?text=장주현",
+                },
+                {
+                    name: "최윤민(수습)",
+                    image: "https://via.placeholder.com/200x200/8b5cf6/ffffff?text=최윤민",
+                },
+            ],
+        },
+        // === 7: 외부부서 ===
+        {
+            title: "물류센터",
+            count: 6,
+            floor: "남양주,용인",
+            members: [
+                {
+                    name: "신선희 (이사)",
+                    image: "https://via.placeholder.com/200x200/1e40af/ffffff?text=신선희",
+                },
+                {
+                    name: "강희구 (이사)",
+                    image: "https://via.placeholder.com/200x200/10b981/ffffff?text=강희구",
+                },
+                {
+                    name: "고성철 (과장)",
+                    image: "https://via.placeholder.com/200x200/f59e0b/ffffff?text=고성철",
+                },
+                {
+                    name: "손선남 (과장)",
+                    image: "https://via.placeholder.com/200x200/ef4444/ffffff?text=손선남",
+                },
+                {
+                    name: "백인호 (대리)",
+                    image: "https://via.placeholder.com/200x200/8b5cf6/ffffff?text=백인호",
+                },
+                {
+                    name: "김종희 (사원)",
+                    image: "https://via.placeholder.com/200x200/06b6d4/ffffff?text=김종희",
+                },
+            ],
+        },
+        // === 8: 마케팅팀 ===
+        {
+            title: "마케팅팀",
+            count: 3,
+            floor: "2F",
+            members: [
+                {
+                    name: "김마케팅 (팀장)",
+                    image: "https://via.placeholder.com/200x200/1e40af/ffffff?text=김마케팅",
+                },
+                {
+                    name: "이광고 (대리)",
+                    image: "https://via.placeholder.com/200x200/10b981/ffffff?text=이광고",
+                },
+                {
+                    name: "박프로모션 (사원)",
+                    image: "https://via.placeholder.com/200x200/f59e0b/ffffff?text=박프로모션",
+                },
+            ],
+        },
+    ],
+};
+
+// 팀원 데이터 변환 함수
+function convertOrgDataToTeamMembers() {
+    const teamMembers = {};
+    
+    orgData.depts.forEach(dept => {
+        const teamName = dept.title;
+        teamMembers[teamName] = dept.members.map(member => {
+            // 이름과 직급 분리
+            const nameMatch = member.name.match(/^(.+?)\s*\((.+?)\)$/);
+            const name = nameMatch ? nameMatch[1] : member.name;
+            const position = nameMatch ? nameMatch[2] : '';
+            
+            return {
+                name: name,
+                position: position,
+                photo: member.image,
+                motto: member.motto || null
+            };
+        });
+    });
+    
+    return teamMembers;
+}
+
+const teamMembers = convertOrgDataToTeamMembers();
+
 const teamNames = [
     "경영관리실",
     "전략기획실",
-    "Aptamil",
-    "Dreame",
-    "컨텐츠 팀",
+    "Aptamil사업부",
+    "Dreame사업부",
+    "컨텐츠팀",
     "고객지원부",
     "물류센터",
     "마케팅팀"
@@ -524,6 +883,8 @@ function showFullscreenModal(name, icon, category, description, color) {
     const modalTitle = document.getElementById('modalTitle');
     const modalCategory = document.getElementById('modalCategory');
     const modalDescription = document.getElementById('modalDescription');
+    const teamMembersSection = document.getElementById('teamMembersSection');
+    const teamMembersGrid = document.getElementById('teamMembersGrid');
     
     // 모달 내용 설정
     modalIcon.innerHTML = `
@@ -537,6 +898,36 @@ function showFullscreenModal(name, icon, category, description, color) {
     
     // 팀 색상 적용
     modalIcon.style.background = color;
+    
+    // 팀원 정보 생성
+    const members = teamMembers[name] || [];
+    if (members.length > 0) {
+        teamMembersSection.style.display = 'block';
+        teamMembersGrid.innerHTML = '';
+        
+        members.forEach(member => {
+            const memberCard = document.createElement('div');
+            memberCard.className = 'team-member-card';
+            memberCard.style.setProperty('--team-color', color);
+            
+            memberCard.innerHTML = `
+                <img src="${member.photo}" alt="${member.name}" class="team-member-photo">
+                <div class="team-member-name">${member.name}</div>
+                <div class="team-member-position">${member.position}</div>
+                ${member.motto ? `<div class="team-member-motto">"${member.motto}"</div>` : ''}
+            `;
+            
+            // 팀원 카드 클릭 이벤트 (이벤트 버블링 방지)
+            memberCard.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showMemberPhotoModal(member, color);
+            });
+            
+            teamMembersGrid.appendChild(memberCard);
+        });
+    } else {
+        teamMembersSection.style.display = 'none';
+    }
     
     // 모달 표시
     modal.classList.add('active');
@@ -554,25 +945,85 @@ function closeFullscreenModal() {
     document.body.style.overflow = '';
 }
 
+// 팀원 사진 모달 표시
+function showMemberPhotoModal(member, teamColor) {
+    const photoModal = document.getElementById('memberPhotoModal');
+    const memberPhotoName = document.getElementById('memberPhotoName');
+    const memberPhotoPosition = document.getElementById('memberPhotoPosition');
+    const memberPhotoImage = document.getElementById('memberPhotoImage');
+    
+    // 팀원 정보 설정
+    memberPhotoName.textContent = member.name;
+    
+    // 직급과 모토 표시
+    let positionText = member.position;
+    if (member.motto) {
+        positionText += `\n"${member.motto}"`;
+    }
+    memberPhotoPosition.textContent = positionText;
+    
+    // 이미지 URL 처리 (placeholder 이미지인 경우 크기 조정)
+    let imageUrl = member.photo;
+    if (imageUrl.includes('via.placeholder.com')) {
+        imageUrl = imageUrl.replace('200x200', '800x800');
+    } else if (imageUrl.includes('w=150&h=150')) {
+        imageUrl = imageUrl.replace('w=150&h=150', 'w=800&h=800');
+    }
+    
+    memberPhotoImage.src = imageUrl;
+    memberPhotoImage.alt = `${member.name} 사진`;
+    
+    // 모달 표시
+    photoModal.classList.add('active');
+    
+    // 스크롤 방지
+    document.body.style.overflow = 'hidden';
+}
+
+// 팀원 사진 모달 닫기
+function closeMemberPhotoModal() {
+    const photoModal = document.getElementById('memberPhotoModal');
+    photoModal.classList.remove('active');
+    
+    // 스크롤 복원
+    document.body.style.overflow = '';
+}
+
 // 모달 이벤트 리스너 설정
 function initModalEvents() {
     const modal = document.getElementById('fullscreenModal');
     const closeBtn = document.getElementById('closeModal');
+    const photoModal = document.getElementById('memberPhotoModal');
+    const closePhotoBtn = document.getElementById('closeMemberPhoto');
     
-    // 닫기 버튼 클릭
+    // 팀 모달 닫기 버튼 클릭
     closeBtn.addEventListener('click', closeFullscreenModal);
     
-    // 모달 배경 클릭 시 닫기
+    // 팀원 사진 모달 닫기 버튼 클릭
+    closePhotoBtn.addEventListener('click', closeMemberPhotoModal);
+    
+    // 팀 모달 배경 클릭 시 닫기
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             closeFullscreenModal();
         }
     });
     
-    // ESC 키로 닫기
+    // 팀원 사진 모달 배경 클릭 시 닫기
+    photoModal.addEventListener('click', (e) => {
+        if (e.target === photoModal) {
+            closeMemberPhotoModal();
+        }
+    });
+    
+    // ESC 키로 닫기 (최상위 모달부터)
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeFullscreenModal();
+        if (e.key === 'Escape') {
+            if (photoModal.classList.contains('active')) {
+                closeMemberPhotoModal();
+            } else if (modal.classList.contains('active')) {
+                closeFullscreenModal();
+            }
         }
     });
 }
