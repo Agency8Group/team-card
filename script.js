@@ -2,8 +2,8 @@
 const teamColors = [
     "#2B3A67", // 경영관리실
     "#5A6D8F", // 전략기획실 (블루퍼플 틸)
-    "#B3D5F2", // Aptamil사업부
-    "#FFA450", // Dreame사업부
+    "#B3D5F2", // Aptamil
+    "#FFA450", // Dreame
     "#7FC7FF", // 컨텐츠팀
     "#50E3C2", // 고객지원부
     "#6E7A87", // 물류센터
@@ -87,9 +87,9 @@ const orgData = {
                 },
             ],
         },
-        // === 3: 핵심 사업부 ===
+        // === 3: 핵심  ===
         {
-            title: "Aptamil사업부",
+            title: "Aptamil",
             count: 18,
             floor: "2F",
             members: [
@@ -171,9 +171,9 @@ const orgData = {
                 },
             ],
         },
-        // === 4: 사업부 2 ===
+        // === 4:  2 ===
         {
-            title: "Dreame사업부",
+            title: "Dreame",
             count: 16,
             floor: "4F",
             members: [
@@ -383,8 +383,8 @@ const teamMembers = convertOrgDataToTeamMembers();
 const teamNames = [
     "경영관리실",
     "전략기획실",
-    "Aptamil사업부",
-    "Dreame사업부",
+    "Aptamil",
+    "Dreame",
     "컨텐츠팀",
     "고객지원부",
     "물류센터",
