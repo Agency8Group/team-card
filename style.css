@@ -783,9 +783,10 @@ body {
 }
 
 .fullscreen-card-description {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #555;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #222;
+    margin-top: 5px;
     text-align: left;
     white-space: pre-wrap;
     margin-bottom: 40px;
