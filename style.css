@@ -296,6 +296,7 @@ body {
     max-height: 120px;
     overflow-y: auto;
     padding-right: 10px;
+    margin-top: 5px;
 }
 
 .card-back .team-description::-webkit-scrollbar {
